@@ -48,3 +48,5 @@ else if (arviosyömään == "luoda")
     db.Add(uusi1);
     db.SaveChanges();
 }
+
+Console.WriteLine("toimiikohan tämä nyt?");
