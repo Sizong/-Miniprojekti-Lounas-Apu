@@ -1,8 +1,8 @@
-using Lounari.Models;
+
 
 
 RavintolatContext db = new RavintolatContext();
-
+List<Ravintola> result = db.Ravintolas.ToList();
 Console.Write("Give me a username: ");
 
 string user = Console.ReadLine();
@@ -14,14 +14,27 @@ Asiaka uusi = new Asiaka()
 db.Add(uusi);
 db.SaveChanges();
 
-Console.WriteLine("Haluatko luoda uuden ravintolan vai antaa arvion ravintolasta?");
+Console.WriteLine("Haluatko luoda uuden ravintolan, arvostella ravintolan vai mennä vaa syömään johonkin ravintolaan?");
+Console.WriteLine("Anna vastauksesi arvostelu, luoda tai syödä");
 string arviosyömään = Console.ReadLine();
+
+if (arviosyömään == "syödä")
+{
+
+    foreach (Ravintola ravintola in result)
+    {
+        Console.WriteLine(ravintola.Nimi);
+    }
+    Console.WriteLine();
+}
+
+
 if (arviosyömään == "arvostelu")
 {
     Console.WriteLine("arvostelee");
 
 }
-else if (arviosyömään == "luoda")
+if (arviosyömään == "luoda")
 {
     Console.WriteLine("Anna uuden ravintolan nimi");
     string ravintola = Console.ReadLine();
@@ -48,4 +61,3 @@ else if (arviosyömään == "luoda")
     db.Add(uusi1);
     db.SaveChanges();
 }
-
